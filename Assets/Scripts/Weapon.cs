@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    StarterAssetsInputs starterAssetsInputs;
+    StarterAssetsInputs starterAssetsInputs; 
 
 
     private void Awake()
@@ -22,6 +22,18 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 starterAssetsInputs.ShootInput(false);
+
+               
+                EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage();
+                }
+                else
+                {
+                    Debug.Log("NotFindingEnemyHealth");
+                }
             }
         }
 
