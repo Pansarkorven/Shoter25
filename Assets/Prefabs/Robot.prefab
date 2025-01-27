@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6513422391524197308}
   - component: {fileID: 4742331738440027446}
   - component: {fileID: 7837065866850196005}
+  - component: {fileID: 8999445053510164197}
   m_Layer: 8
   m_Name: Robot
   m_TagString: Untagged
@@ -68,6 +69,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &8999445053510164197
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402271125270166057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6144963
+  m_Center: {x: 0, y: 0.11449629, z: 0}
 --- !u!1001 &1349697164603210452
 PrefabInstance:
   m_ObjectHideFlags: 0
