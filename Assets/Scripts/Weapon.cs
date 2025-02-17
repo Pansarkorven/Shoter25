@@ -3,40 +3,19 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    StarterAssetsInputs starterAssetsInputs; 
+    [SerializeField] ParticleSystem muzzleFlash;
 
-
-    private void Awake()
+    public void Shoot(WeaponSO weaponSO)
     {
-       starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();   
-    }
+        muzzleFlash.Play();
+        RaycastHit hit;
 
-    void Update()
-    {
-
-        if (starterAssetsInputs.Shoot)
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
         {
-            RaycastHit hit;
+            Instantiate(weaponSO.HitVFXPrefab, hit.point, Quaternion.identity);
 
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
-            {
-                Debug.Log(hit.collider.name);
-                starterAssetsInputs.ShootInput(false);
-
-               
-                EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                
-                if (enemyHealth != null)
-                {
-                    enemyHealth.TakeDamage();
-                }
-                else
-                {
-                    Debug.Log("NotFindingEnemyHealth");
-                }
-            }
+            EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+            enemyHealth?.TakeDamage(weaponSO.Damage);
         }
-
-            
     }
 }

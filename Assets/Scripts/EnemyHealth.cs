@@ -3,22 +3,28 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     int Startinghealth = 3;
-    int CurrentHealth;
+    int currentHealth;
     void Start()
     {
-        CurrentHealth = Startinghealth;
+        currentHealth = Startinghealth;
     }
 
     void Update()
     {
-        if (CurrentHealth <= 0)
-        { 
-         GameObject.Destroy(gameObject);
+        if (currentHealth <= 0)
+        {
+            GameObject.Destroy(gameObject);
         }
 
     }
-    public void TakeDamage()
+
+    public void TakeDamage(int amount)
     {
-        CurrentHealth -= 1;
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
